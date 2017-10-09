@@ -1,5 +1,6 @@
 # GenericFilters
 
+```
        _~
     _~ )_)_~
     )_))_))_)
@@ -7,7 +8,7 @@
     \_______/
   ~~~~~~~~~~~~~
    Carlos Vega
-
+```
 
 Simple class with for generic filtering.
 By default checks if the strings from the conditions are contained in the given values.

@@ -1,7 +1,7 @@
 import collections
 
 class filter(object):
-        def __init__(self, alias='filter', equals=False, **conditions):
+        def __init__(self, alias='filter name', equals=False, **conditions):
                 self.alias = alias
                 self._c = conditions
                 for k, v in self._c.iteritems():
@@ -24,3 +24,6 @@ class filter(object):
                 trues = [self._compare(v, values[k]) for k, v in gen if values.get(k, None) != None]
                 return all(trues) if trues else False
                 #true when all values match for at least one value in all conditions
+
+        def __str__(self):
+                return self.alias + ': ' + self._c.__str__()

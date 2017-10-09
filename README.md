@@ -9,7 +9,7 @@
 ## Example:
 ```python
 f = filter(alias='filter name', ip='192.168.2.1', method=['GET', 'POST'])
-f.check_filter(ip='192.168.2.1', method='GET')   # => TRUE
+f.check_filter(ip='192.168.2.1', method='GET')          # => TRUE
 f.check_filter(ip='192.168.2.1', method='POST')         # => TRUE
 
 f.check_filter(ip='192.168.2.1') 			# => FALSE

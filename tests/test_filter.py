@@ -11,6 +11,10 @@ def filter_one():
 def filter_two():
 	return filter(alias='filtro', ip='192.168.2.1', method='GET', uri=['example-01', 'example-03'])
 
+@pytest.fixture(scope = 'session')
+def filter_three():
+	return filter(alias='filtro', equals=True, ip='192.168.2.1', method='GET', uri=['example-01', 'example-03'])
+
 class Test_Filter_1(object):
 	def test_one(self, filter_one):
 		boolean = filter_one.check_filter(ip='192.168.2.1', method='GET')
@@ -32,6 +36,9 @@ class Test_Filter_1(object):
 		assert boolean == False
 	def test_seven(self, filter_one):
 		boolean = filter_one.check_filter()
+		assert boolean == False
+	def test_eight(self, filter_one):
+		boolean = filter_one.check_filter(potato='potato')
 		assert boolean == False
 
 class Test_Filter_2(object):
@@ -59,4 +66,43 @@ class Test_Filter_2(object):
 	def test_eight(self, filter_two):
 		boolean = filter_two.check_filter(ip='192.168.2.1', method='GET', uri='-abasda-example-03-abasda')
 		assert boolean == True
+	def test_nine(self, filter_two):
+		boolean = filter_two.check_filter(potato='potato')
+		assert boolean == False
+
+
+class Test_Filter_2(object):
+	def test_one(self, filter_three):
+		boolean = filter_three.check_filter(ip='192.168.2.1', method='GET', uri='-abasda-example-01-abasda')
+		assert boolean == False
+	def test_two(self, filter_three):
+		boolean = filter_three.check_filter(ip='192.168.2.1', method='GET', uri='EXAMPLE')
+		assert boolean == False
+	def test_three(self, filter_three):
+		boolean = filter_three.check_filter(ip='192.168.2.1', method='GET', uri='EXAMPLE', patata='patata')
+		assert boolean == False
+	def test_four(self, filter_three):
+		boolean = filter_three.check_filter(ip='192.168.2.1', method='GET', uri='abasda-example-02-abasda')
+		assert boolean == False
+	def test_five(self, filter_three):
+		boolean = filter_three.check_filter(ip='192.168.2.1', method='POST')
+		assert boolean == False
+	def test_six(self, filter_three):
+		boolean = filter_three.check_filter(ip='192.168.2.2', method='GET')
+		assert boolean == False
+	def test_seven(self, filter_three):
+		boolean = filter_three.check_filter()
+		assert boolean == False
+	def test_eight(self, filter_three):
+		boolean = filter_three.check_filter(ip='192.168.2.1', method='GET', uri='-abasda-example-03-abasda')
+		assert boolean == False
+	def test_nine(self, filter_three):
+		boolean = filter_three.check_filter(ip='192.168.2.1', method='GET', uri='example-03')
+		assert boolean == True
+	def test_nine(self, filter_three):
+		boolean = filter_three.check_filter(ip='192.168.2.1', method='GET', uri='example-01')
+		assert boolean == True
+	def test_ten(self, filter_three):
+		boolean = filter_three.check_filter(potato='potato')
+		assert boolean == False
 

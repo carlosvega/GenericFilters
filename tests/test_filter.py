@@ -5,15 +5,15 @@ from filters.filter import *
 
 @pytest.fixture(scope = 'session')
 def filter_one():
-	return filter(alias='filtro', ip='192.168.2.1', method=['GET', 'POST'])
+	return filter(alias='filter_one', ip='192.168.2.1', method=['GET', 'POST'])
 
 @pytest.fixture(scope = 'session')
 def filter_two():
-	return filter(alias='filtro', ip='192.168.2.1', method='GET', uri=['example-01', 'example-03'])
+	return filter(alias='filter_two', ip='192.168.2.1', method='GET', uri=['example-01', 'example-03'])
 
 @pytest.fixture(scope = 'session')
 def filter_three():
-	return filter(alias='filtro', equals=True, ip='192.168.2.1', method='GET', uri=['example-01', 'example-03'])
+	return filter(alias='filter_three', equals=True, ip='192.168.2.1', method='GET', uri=['example-01', 'example-03'])
 
 class Test_Filter_1(object):
 	def test_one(self, filter_one):

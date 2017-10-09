@@ -9,23 +9,23 @@
 ## Example:
 ```python
 f = filter(alias='filtro', ip='192.168.2.1', method=['GET', 'POST'])
-f.check_filter(ip='192.168.2.1', method='GET')  	# => TRUE
-f.check_filter(ip='192.168.2.1', method='POST') 	# => TRUE
+f.check_filter(ip='192.168.2.1', method='GET')  	       # => TRUE
+f.check_filter(ip='192.168.2.1', method='POST')         # => TRUE
 
-f.check_filter(ip='192.168.2.1') 					# => FALSE
-f.check_filter(method='GET') 						# => FALSE
+f.check_filter(ip='192.168.2.1') 				# => FALSE
+f.check_filter(method='GET') 				# => FALSE
 f.check_filter(ip='192.168.2.1', method='POTATO')	# => FALSE
-f.check_filter() 									# => FALSE
+f.check_filter() 						# => FALSE
 ```
 
 ## Installation
 
-git clone https://github.com/carlosvega/GenericFilters.git gf
-cd gf
-virtualenv .env
-source .env/bin/activate
-pip install -r requirements.txt
-py.test
+* git clone https://github.com/carlosvega/GenericFilters.git gf
+* cd gf
+* virtualenv .env
+* source .env/bin/activate
+* pip install -r requirements.txt
+* py.test
 
 
 

@@ -28,7 +28,6 @@ f.check_filter() 						# => FALSE
 * py.test
 
 
-
 ```
        _~
     _~ )_)_~
